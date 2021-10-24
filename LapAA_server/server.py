@@ -15,12 +15,13 @@ def process():
         file = request.files['file']
         print('File получен')
 
-    with open('source\input_image-1.jpg', "rb") as image:
+    with open('source\\auto.jpg', "rb") as image:
         b = bytearray(image.read())
     
     out = Laplacian(b).run()
-    return send_file(out.tobytes(), attachment_filename='tiger.jpg')
-
+    
+    Image.fromarray(np.uint8(out) , 'L').save("source\output.jpeg")
+    return send_file("source\output.jpeg")
 
 
 if __name__ == '__main__':
