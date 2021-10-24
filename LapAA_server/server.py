@@ -12,16 +12,17 @@ app.config.from_mapping(
 @app.route('/get-edges', methods=['POST', 'GET'])
 def process():
     # if request.method == 'POST':
-    if 'file' in request.files:
-        file = request.files['file']
-        # print(file[0])
+    if 'image' in request.files:
+        file = request.files['image']
+        print(file)
 
     try:
         with open(file, "rb") as image:
             b = bytearray(image.read())
+        out = Laplacian(b).run()
     except:
         print('Не тут то было')
-    out = Laplacian(b).run()
+        out = Laplacian(file).run()
     
     Image.fromarray(np.uint8(out) , 'L').save("source\output.jpeg")
     return send_file("source\output.jpeg")
