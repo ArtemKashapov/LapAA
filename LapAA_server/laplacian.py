@@ -55,16 +55,16 @@ class Laplacian:
 
      
 
-import time
-if __name__ == '__main__':
-    with open('source\input_image-1.jpg', "rb") as image:
-        f = image.read()
-        b = bytearray(f)
+# import time
+# if __name__ == '__main__':
+#     with open('source\input_image-1.jpg', "rb") as image:
+#         f = image.read()
+#         b = bytearray(f)
     
-    t0 = time.time()
-    l = Laplacian(b)
-    edges = l.run()
-    print('execution time:' + str(time.time() - t0))
+#     t0 = time.time()
+#     l = Laplacian(b)
+#     edges = l.run()
+#     print('execution time:' + str(time.time() - t0))
     
-    l.im_show(Image.fromarray(np.uint8(edges) , 'L'))
-    l.im_show(l.original)
+#     l.im_show(Image.fromarray(np.uint8(edges) , 'L'))
+#     l.im_show(l.original)
